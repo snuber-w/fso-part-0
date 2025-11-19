@@ -8,12 +8,10 @@ sequenceDiagram
     participant server
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate server
-    server-->>browser: HTML document
-    deactivate server
-
     Note right of browser: payload: FormData = {"note": "new POST note"}
-    Note right of server: redirect from "new_note" to "note"
+    activate server
+    server-->>browser: redirect from "new_note" to "note"
+    deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
